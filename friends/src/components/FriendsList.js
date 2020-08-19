@@ -22,7 +22,11 @@ const FriendsList = props => {
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log(formData);
+        axios.post("http://localhost:5000/api/friends", formData).then(({data})=> {
+            console.log(data);
+        }).catch(err=>{
+            console.log(err);
+        });
     }
 
     useEffect(()=>{
