@@ -15,13 +15,17 @@ function App() {
   
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const setFriends = (friendsData) => {
+    dispatch({type: "SET_FRIENDS", payload: friendsData});
+  }
+
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
           <Home/>
         </Route>
-        <ProtectedRoute path="/friends" component={FriendsList}/>
+        <ProtectedRoute friends={state.friends} path="/friends" setFriends={setFriends} component={FriendsList}/>
       </Switch>
     </div>
   );
