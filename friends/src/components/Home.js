@@ -1,9 +1,11 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 
 import LoginForm from "./LoginForm";
 
 const Home = () => {
+    const history = useHistory();
     const [formData, setFormData] = useState({
         username: "",
         password: ""
@@ -20,7 +22,8 @@ const Home = () => {
         e.preventDefault();
         axios.post("http://localhost:5000/api/login", formData).then(({data})=>{
             const token = data.payload;
-            localStorage.setItem("token",data.payload);
+            localStorage.setItem("token", token);
+            history.push("/friends");
         }).catch(err=>{
             console.log(err);
         })
