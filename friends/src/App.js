@@ -4,7 +4,9 @@ import './App.css';
 
 import reducer from "./reducers/index";
 
+import ProtectedRoute from "./ProtectedRoute";
 import Home from "./components/Home";
+import FriendsList from "./components/FriendsList";
 
 function App() {
   const initialState = {
@@ -19,6 +21,7 @@ function App() {
         <Route exact path="/">
           <Home/>
         </Route>
+        <ProtectedRoute path="/friends" component={FriendsList}/>
       </Switch>
     </div>
   );
