@@ -24,6 +24,11 @@ const FriendsList = props => {
         e.preventDefault();
         axios.post("http://localhost:5000/api/friends", formData).then(({data})=> {
             props.setFriends(data);
+            setFormData({
+                name: "",
+                age: "",
+                email: ""
+            });
         }).catch(err=>{
             console.log(err);
         });
