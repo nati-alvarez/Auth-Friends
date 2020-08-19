@@ -19,6 +19,7 @@ function App() {
     dispatch({type: "SET_FRIENDS", payload: friendsData});
   }
 
+
   return (
     <div className="App">
       <Switch>
