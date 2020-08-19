@@ -1,5 +1,8 @@
 import React, {useEffect} from "react";
 import axiosWithAuth from "../helpers/axioxWithAuth";
+
+import Friend from "./Friend";
+
 const axios = axiosWithAuth();
 
 const FriendsList = props => {
@@ -16,9 +19,7 @@ const FriendsList = props => {
             friends list
             {props.friends && props.friends.map(friend=>{
                 return (
-                    <div key={friend.div}>
-                        {friend.name}
-                    </div>
+                    <Friend  key={friend.id} friend={friend}/>
                 )
             })}
         </main>
