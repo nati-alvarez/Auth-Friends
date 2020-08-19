@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import axios from "axios";
 
 import LoginForm from "./LoginForm";
 
@@ -17,6 +18,12 @@ const Home = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+        axios.post("http://localhost:5000/api/login", formData).then(({data})=>{
+            const token = data.payload;
+            localStorage.setItem("token",data.payload);
+        }).catch(err=>{
+            console.log(err);
+        })
     }
 
     return (
