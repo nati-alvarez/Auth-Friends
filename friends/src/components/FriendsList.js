@@ -44,7 +44,6 @@ const FriendsList = props => {
 
     const updateFriend = (id, data)=> {
         axios.put(`http://localhost:5000/api/friends/${id}`, data).then(({data})=>{
-            console.log(data)
             props.setFriends(data);
         }).catch(err=>{
             console.log(err);
