@@ -34,6 +34,14 @@ const FriendsList = props => {
         });
     }
 
+    const deleteFriend = id => {
+        axios.delete(`http://localhost:5000/api/friends/${id}`).then(({data})=>{
+            props.setFriends(data);
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+
     useEffect(()=>{
         axios.get("http://localhost:5000/api/friends").then(({data})=>{
             props.setFriends(data);
@@ -48,7 +56,7 @@ const FriendsList = props => {
             <FriendForm formData={formData} onChange={onChange} onSubmit={onSubmit}/>
             {props.friends && props.friends.map(friend=>{
                 return (
-                    <Friend  key={friend.id} friend={friend}/>
+                    <Friend  deleteFriend={deleteFriend} key={friend.id} friend={friend}/>
                 )
             })}
         </main>
